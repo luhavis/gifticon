@@ -26,6 +26,10 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import HeaderView from './components/HeaderView';
+import Title from './components/Title';
+import Card from './components/Card';
+
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
@@ -65,7 +69,6 @@ const App: () => Node = () => {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
@@ -84,6 +87,13 @@ const App: () => Node = () => {
             Read the docs to discover what to do next:
           </Section>
           <LearnMoreLinks />
+          <HeaderView />
+          <Title title="내 쿠폰" />
+
+          <View style={[styles.cardList, backgroundStyle]}>
+            <Card />
+            <Card />
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -106,6 +116,13 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+  cardList: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
   },
 });
 
